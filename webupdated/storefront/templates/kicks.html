@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const csrfToken = '{% csrf_token %}'
+    </script>
+    <script src="http://localhost:8000/static/js/cart.js"></script>
+    <title>Dark Theme Products</title>
+    <!-- Include Bootstrap CSS (dark theme) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles for product boxes */
+        .product-box {
+            background-color: #343a40; /* Dark background color */
+            color: white; /* Text color */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        /* Style for product images */
+        .thumbnail {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kicks</h1>
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+            <div class="col-lg-4">
+                <div class="product-box">
+                    <img class="thumbnail" src="{{ product.image.url }}">
+                    <h6><strong>{{ product.product_name }}</strong></h6>
+                    <hr>
+                    <button data-product-id="{{product.id}}" class="add-to-cart-button">Add to Cart</button>
+                    <a class="btn btn-outline-success" href="{% url 'product_detail' product.id %}">View</a>
+                    <h4 style="display: inline-block;">{{ product.price | floatformat:2}}</h4>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

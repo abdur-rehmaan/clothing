@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Custom styles for product boxes */
+        .product-box {
+            background-color: #343a40; /* Dark background color */
+            color: white; /* Text color */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        /* Style for product images */
+        .thumbnail {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Style for "Add to Cart" button */
+        .add-to-cart-btn {
+            background-color: #28a745; /* Green color for the button */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+    </style>
+    <title>{{ product.product_name }} - Product Detail</title>
+</head>
+<body>
+    <div class="product-box">
+        <img class="thumbnail" src="{{ product.image.url }}">
+        <h1>{{ product.product_name }}</h1>
+        <p>{{ product.product_desc }}</p>
+        <p>Price: ${{ product.price }}</p>
+        <!-- Add other fields as needed -->
+
+        <!-- Add to Cart button -->
+        <button class="add-to-cart-btn">Add to Cart</button>
+    </div>
+</body>
+</html>

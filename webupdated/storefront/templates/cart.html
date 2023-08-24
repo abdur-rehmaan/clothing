@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const csrfToken = '{% csrf_token %}'
+    </script>
+  <script src="../static/js/cart.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart</title>
+<style>
+  /* Your existing styles here */
+
+  /* Add the following style to ensure proper alignment of cart items */
+  .cart-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto auto;
+    align-items: center;
+    gap: 1rem;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="box-element">
+      <a class="btn btn-outline-dark" href="{% url 'newarrival' %}">&#x2190; Continue Shopping</a>
+    </div>
+
+    <div class="box-element">
+      <div class="cart-row">
+        <div></div>
+        <div><strong>Item</strong></div>
+        <div><strong>Price</strong></div>
+        <div><strong>Quantity</strong></div>
+        <div><strong>Total</strong></div>
+      </div>
+
+      {% for item in items %}
+      <div class="cart-item"> 
+        <div><img src="{{ item.product.image.url }}" alt="{{ item.product.product_name }}"></div>
+        <div class="product-info">
+          <p class="product-name">{{ item.product.product_name }}</p>
+          <p class="product-price">${{ item.product.price | floatformat:2 }}</p>
+          <p class="product-quantity">Quantity: {{ item.quantity }}</p>
+          <button class="remove-from-cart-button" data-product-id="{{ item.product.id }}">Remove from Cart</button>
+        </div>
+        <div>${{ item.get_total }}</div>
+        <div class="cart-row">
+          <!-- ... Other cart item content ... -->
+        </div>        
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

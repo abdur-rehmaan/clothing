@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Categories</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+  }
+
+  header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .category {
+    flex: 1;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .category h2 {
+    margin-top: 0;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Categories</h1>
+    <p>Explore different categories.</p>
+  </header>
+  <div class="container">
+    <div class="category">
+      <h2>Apparel</h2>
+      <p>Latest embroided hoodies and drop shoulder tees</p>
+      <a href="apparel" class="explore-btn">Explore</a>
+    </div>
+    <div class="category">
+      <h2>Kicks</h2>
+      <p>Perfect dot copies of premium Nike & Yeezy</p>
+      <a href="kicks" class="explore-btn">Explore</a>
+    </div>
+  </div>
+</body>
+</html>
